@@ -10,7 +10,7 @@ export function AuthShell({ children }: { children: ReactNode }) {
         <p className="text-[23px] font-semibold tracking-[-0.93px] text-black">doors</p>
       </div>
 
-      <div className="absolute left-1/2 top-1/2 flex w-[380px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6">
+      <div className="absolute left-1/2 top-1/2 flex w-[calc(100%-32px)] max-w-[380px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-6">
         {children}
       </div>
     </div>

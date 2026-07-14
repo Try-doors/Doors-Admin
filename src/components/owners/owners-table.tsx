@@ -44,7 +44,7 @@ export function OwnersTable({ owners, variant, hidePhone, onDelete, onApprove, o
   }
 
   return (
-    <table className="w-full border-collapse text-left">
+    <table className="w-full min-w-[860px] border-collapse text-left">
       <thead>
         <tr className="border-b border-[#F6F8FA]">
           <th className="w-[64px] py-3 pl-5">

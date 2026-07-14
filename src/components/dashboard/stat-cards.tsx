@@ -21,7 +21,7 @@ export function StatCards() {
       {stats.map((stat) => (
         <div
           key={stat.label}
-          className="flex h-[120px] w-[256px] flex-col justify-center gap-3 rounded-lg border border-[#E2E4E9] bg-white p-4"
+          className="flex h-[120px] w-full flex-col justify-center gap-3 rounded-lg border border-[#E2E4E9] bg-white p-4 sm:w-[256px]"
         >
           <div className="flex items-center gap-1.5">
             <div className="flex items-center justify-center rounded-full bg-[#F5F8FF] p-1">

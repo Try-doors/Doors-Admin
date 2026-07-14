@@ -83,10 +83,10 @@ export function PropertyFilterPanel({
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/40" onClick={onClose}>
       <div
-        className="flex h-full w-[476px] flex-col bg-white"
+        className="flex h-full w-full max-w-[476px] flex-col bg-white"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-[30px] pt-6 pb-6">
+        <div className="flex items-center justify-between px-5 pt-6 pb-6 sm:px-[30px]">
           <p className="text-[24px] font-semibold tracking-[-0.5px] text-[#0C111D]">Filter By</p>
           <button
             type="button"
@@ -97,7 +97,7 @@ export function PropertyFilterPanel({
           </button>
         </div>
 
-        <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-[30px]">
+        <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-5 sm:px-[30px]">
           <div className="flex flex-col gap-3">
             <p className={labelClassName}>Category</p>
             <div className="flex gap-4">
@@ -209,7 +209,7 @@ export function PropertyFilterPanel({
           </div>
         </div>
 
-        <div className="flex h-[88px] shrink-0 items-center gap-4 px-[30px]">
+        <div className="flex h-[88px] shrink-0 items-center gap-4 px-5 sm:px-[30px]">
           <button
             type="button"
             onClick={() => setDraft(emptyPropertyFilters)}

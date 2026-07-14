@@ -30,8 +30,8 @@ export function TeamManagementTab({ onSaved }: { onSaved: (message: string) => v
         </button>
       </div>
 
-      <div className="rounded-2xl bg-white">
-        <table className="w-full border-collapse text-left">
+      <div className="overflow-x-auto rounded-2xl bg-white">
+        <table className="w-full min-w-[760px] border-collapse text-left">
           <thead>
             <tr className="border-b border-[#F6F8FA]">
               <th className="w-[64px] py-3 pl-5">

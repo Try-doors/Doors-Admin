@@ -83,7 +83,7 @@ export function PhotosMediaTab({
     <div className="flex flex-col gap-8 rounded-2xl border border-[#E2E4E9] bg-white p-6">
       <div className="flex flex-col gap-4">
         <p className="text-[18px] font-medium tracking-[-0.27px] text-[#0C111D]">Photos</p>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
           {photos.map((photo, index) => (
             <PhotoTile
               key={photo.id}

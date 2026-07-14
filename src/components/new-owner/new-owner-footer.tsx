@@ -16,7 +16,7 @@ export function NewOwnerFooter({
   showArrow,
 }: NewOwnerFooterProps) {
   return (
-    <footer className="flex h-[88px] items-center justify-end gap-4 border-t border-[#F6F8FA] px-11">
+    <footer className="flex h-[88px] items-center justify-end gap-2 border-t border-[#F6F8FA] px-4 sm:gap-4 sm:px-11">
       <button
         type="button"
         onClick={onCancel}

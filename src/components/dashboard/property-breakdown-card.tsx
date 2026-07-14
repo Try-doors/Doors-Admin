@@ -17,7 +17,7 @@ const gradientStops = (() => {
 
 export function PropertyBreakdownCard() {
   return (
-    <div className="flex h-[374px] w-[256px] shrink-0 flex-col gap-9 rounded-lg border border-[#E2E4E9] bg-white p-5">
+    <div className="flex h-[374px] w-full shrink-0 flex-col gap-9 rounded-lg border border-[#E2E4E9] bg-white p-5 xl:w-[256px]">
       <p className="text-[16px] font-medium tracking-[-0.176px] text-[#0A0D14]">
         Property Breakdown
       </p>

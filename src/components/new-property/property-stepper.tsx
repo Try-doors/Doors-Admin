@@ -11,7 +11,7 @@ export function PropertyStepper({ currentIndex }: { currentIndex: number }) {
         const isLast = index === steps.length - 1
 
         return (
-          <div key={label} className={'flex flex-col gap-2 ' + (isLast ? 'items-end shrink-0' : 'flex-1')}>
+          <div key={label} className={'flex min-w-0 flex-col gap-2 ' + (isLast ? 'items-end shrink-0' : 'flex-1')}>
             <div className="flex h-6 w-full items-center">
               {isCompleted ? (
                 <div className="z-[2] -mr-px flex size-6 shrink-0 items-center justify-center rounded-full bg-[#2970FF]">
@@ -34,7 +34,7 @@ export function PropertyStepper({ currentIndex }: { currentIndex: number }) {
             </div>
             <p
               className={
-                'text-[12px] font-medium whitespace-nowrap ' +
+                'truncate text-[12px] font-medium ' +
                 (isCompleted ? 'text-[#2B59FF]' : isCurrent ? 'text-[#0A0D14]' : 'text-[#525866]')
               }
             >

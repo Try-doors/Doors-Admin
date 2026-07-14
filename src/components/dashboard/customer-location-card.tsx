@@ -12,7 +12,7 @@ const locations = [
 
 export function CustomerLocationCard({ onViewAll }: { onViewAll?: () => void }) {
   return (
-    <div className="flex h-[408px] w-[348px] shrink-0 flex-col gap-4 rounded-lg border border-[#E2E4E9] bg-white p-5">
+    <div className="flex h-[408px] w-full shrink-0 flex-col gap-4 rounded-lg border border-[#E2E4E9] bg-white p-5 xl:w-[348px]">
       <div className="flex items-center justify-between">
         <p className="text-[16px] font-medium tracking-[-0.176px] text-[#0A0D14]">
           Customer Location

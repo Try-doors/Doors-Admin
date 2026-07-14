@@ -26,7 +26,7 @@ export function CorporateContextCard({ booking }: { booking: Booking }) {
       <p className="text-[16px] font-medium tracking-[-0.176px] text-[#0C111D]">
         Corporate Context
       </p>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Field label="Company" value={booking.corporate.company} />
         <Field label="Approver" value={booking.corporate.approver} />
         <div>

@@ -39,7 +39,7 @@ export function PaymentEscrowCard({ booking }: { booking: Booking }) {
         Payment &amp; Escrow
       </p>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Field label="Gross Amount" value={formatAmount(booking.grossAmount, booking.currency)} />
         <Field
           label="Commission"
@@ -65,8 +65,8 @@ export function PaymentEscrowCard({ booking }: { booking: Booking }) {
           {escrowSteps.map((step, index) => {
             const done = index <= currentIndex
             return (
-              <div key={step.key} className="flex flex-1 items-center last:flex-none">
-                <div className="flex flex-col items-center gap-1.5">
+              <div key={step.key} className="flex min-w-0 flex-1 items-center last:flex-none">
+                <div className="flex min-w-0 flex-col items-center gap-1.5">
                   <span
                     className={
                       'flex size-6 items-center justify-center rounded-full text-[11px] font-semibold ' +
@@ -77,7 +77,7 @@ export function PaymentEscrowCard({ booking }: { booking: Booking }) {
                   </span>
                   <p
                     className={
-                      'whitespace-nowrap text-[11px] font-medium ' +
+                      'max-w-full truncate text-[11px] font-medium ' +
                       (done ? 'text-[#0A0D14]' : 'text-[#98A2B3]')
                     }
                   >
