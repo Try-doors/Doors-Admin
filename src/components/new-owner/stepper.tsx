@@ -4,12 +4,12 @@ type Step = { label: string }
 
 export function Stepper({ steps, currentIndex }: { steps: Step[]; currentIndex: number }) {
   return (
-    <div className="mx-auto flex w-[508px] items-start">
+    <div className="mx-auto flex w-full max-w-[508px] items-start px-6">
       {steps.map((step, index) => {
         const isCompleted = index < currentIndex
         const isLast = index === steps.length - 1
         return (
-          <div key={step.label} className={'flex flex-col gap-2 ' + (isLast ? 'shrink-0' : 'flex-1')}>
+          <div key={step.label} className={'flex min-w-0 flex-col gap-2 ' + (isLast ? 'shrink-0' : 'flex-1')}>
             <div className="flex h-6 items-center gap-[3px]">
               {isCompleted ? (
                 <div className="flex size-6 shrink-0 items-center justify-center rounded-full bg-[#2970FF]">
@@ -26,7 +26,8 @@ export function Stepper({ steps, currentIndex }: { steps: Step[]; currentIndex: 
             </div>
             <p
               className={
-                'text-[12px] font-medium ' + (isCompleted ? 'text-[#00359E]' : 'text-[#0A0D14]')
+                'truncate text-[12px] font-medium ' +
+                (isCompleted ? 'text-[#00359E]' : 'text-[#0A0D14]')
               }
             >
               {step.label}

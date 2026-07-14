@@ -52,7 +52,7 @@ export function BookingMetricCards() {
       {cards.map((card) => (
         <div
           key={card.label}
-          className="flex h-[100px] w-[256px] flex-col justify-center gap-3 rounded-lg border border-[#E2E4E9] bg-white p-4"
+          className="flex h-[100px] w-full flex-col justify-center gap-3 rounded-lg border border-[#E2E4E9] bg-white p-4 sm:w-[256px]"
         >
           <div className="flex items-center gap-1.5">
             <div

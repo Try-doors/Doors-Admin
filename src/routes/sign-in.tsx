@@ -20,7 +20,7 @@ function SignIn() {
         <p className="text-[23px] font-semibold tracking-[-0.93px] text-black">doors</p>
       </div>
 
-      <div className="absolute left-1/2 top-1/2 flex w-[380px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-[31px]">
+      <div className="absolute left-1/2 top-1/2 flex w-[calc(100%-32px)] max-w-[380px] -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-[31px]">
         <div className="flex w-full flex-col items-center gap-2 text-center">
           <h1 className="font-['DM_Sans',sans-serif] text-[32px] font-semibold leading-[40px] tracking-[-1px] text-[#0C111D]">
             Sign In

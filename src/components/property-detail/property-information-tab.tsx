@@ -47,7 +47,7 @@ export function PropertyInformationTab({ data, onChange }: PropertyInformationTa
     <div className="flex flex-col gap-4">
       <div className={cardClassName}>
         <p className={sectionTitleClassName}>About Property</p>
-        <div className="grid grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
               <Label className={labelClassName}>Property Name</Label>
@@ -93,7 +93,7 @@ export function PropertyInformationTab({ data, onChange }: PropertyInformationTa
 
       <div className={cardClassName}>
         <p className={sectionTitleClassName}>Set up Location</p>
-        <div className="grid grid-cols-2 gap-x-10 gap-y-4">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1">
             <Label className={labelClassName}>Country</Label>
             <div className="relative">
@@ -190,7 +190,7 @@ export function PropertyInformationTab({ data, onChange }: PropertyInformationTa
 
       <div className={cardClassName}>
         <p className={sectionTitleClassName}>Specific Details</p>
-        <div className="grid grid-cols-2 gap-x-10 gap-y-5">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-5 sm:grid-cols-2">
           <CounterField
             icon={BedDouble}
             label="Bedroom"

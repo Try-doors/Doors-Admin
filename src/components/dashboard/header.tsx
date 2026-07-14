@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { Bell, ChevronDown, CircleHelp, Search } from 'lucide-react'
+import { Bell, ChevronDown, CircleHelp, Menu, Search } from 'lucide-react'
 
 import {
   DropdownMenu,
@@ -10,28 +10,37 @@ import {
 import { useNotifications } from '#/lib/notifications-store'
 import { initials, useProfile } from '#/lib/profile-store'
 
-export function Header() {
+export function Header({ onMenuClick }: { onMenuClick: () => void }) {
   const { profile } = useProfile()
   const { unreadCount } = useNotifications()
 
   return (
-    <header className="sticky top-0 z-10 flex h-[72px] items-center justify-between border-b border-[#F6F8FA] bg-white px-8">
-      <div className="flex w-[273px] items-center gap-2 rounded-lg bg-[#F6F8FA] p-3">
-        <Search className="size-5 text-[#525866]" strokeWidth={1.75} />
+    <header className="sticky top-0 z-10 flex h-[72px] items-center justify-between gap-3 border-b border-[#F6F8FA] bg-white px-4 md:px-8">
+      <button
+        type="button"
+        onClick={onMenuClick}
+        className="flex size-9 shrink-0 items-center justify-center rounded-lg text-[#31353F] hover:bg-[#F6F8FA] md:hidden"
+        aria-label="Open menu"
+      >
+        <Menu className="size-5" strokeWidth={1.75} />
+      </button>
+
+      <div className="flex min-w-0 flex-1 items-center gap-2 rounded-lg bg-[#F6F8FA] p-3 sm:max-w-[273px]">
+        <Search className="size-5 shrink-0 text-[#525866]" strokeWidth={1.75} />
         <input
           type="text"
           placeholder="Search..."
-          className="w-full bg-transparent text-[14px] text-[#525866] tracking-[-0.084px] placeholder:text-[#525866] focus:outline-none"
+          className="w-full min-w-0 bg-transparent text-[14px] text-[#525866] tracking-[-0.084px] placeholder:text-[#525866] focus:outline-none"
         />
       </div>
 
-      <div className="flex items-center gap-[14px]">
+      <div className="flex items-center gap-2 md:gap-[14px]">
         <button
           type="button"
           className="flex h-8 items-center justify-center gap-1 rounded-full bg-[#F6F8FA] px-[10px] text-[12px] font-medium text-[#31353F]"
         >
           <CircleHelp className="size-5" strokeWidth={1.75} />
-          Need Help
+          <span className="hidden sm:inline">Need Help</span>
         </button>
         <Link to="/notifications" className="relative flex size-8 items-center justify-center text-[#31353F]">
           <Bell className="size-5" strokeWidth={1.75} />

@@ -15,7 +15,7 @@ export function PropertiesTab() {
     <div className="flex flex-col gap-4">
       <h2 className="text-[18px] font-semibold tracking-[-0.176px] text-[#0A0D14]">Properties</h2>
 
-      <div className="rounded-2xl bg-white">
+      <div className="overflow-x-auto rounded-2xl bg-white">
         <PropertiesTable
           properties={properties}
           onView={(id) => navigate({ to: '/properties/$propertyId', params: { propertyId: id } })}

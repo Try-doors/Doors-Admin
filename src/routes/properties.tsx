@@ -60,7 +60,7 @@ function PropertiesPage() {
   return (
     <DashboardLayout>
       <div className="flex flex-col gap-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h1 className="text-[24px] font-semibold tracking-[-1px] text-[#0C111D]">Properties</h1>
           {toast && <SuccessToast message={toast} onDismiss={() => setToast(null)} />}
           <div className="flex items-center gap-2.5">
@@ -85,7 +85,7 @@ function PropertiesPage() {
 
         <FilterChipsBar filters={filters} onChange={setFilters} />
 
-        <div className="rounded-2xl bg-white">
+        <div className="overflow-x-auto rounded-2xl bg-white">
           {properties.length === 0 ? (
             <PropertiesEmptyState onNewProperty={goToNewProperty} />
           ) : (

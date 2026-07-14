@@ -86,7 +86,7 @@ export function PersonalInfoTab({ owner, onSave }: PersonalInfoTabProps) {
         <h3 className="mb-5 text-[16px] font-semibold tracking-[-0.176px] text-[#0A0D14]">
           Other Information
         </h3>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1">
             <Label className={labelClassName}>{isBusiness ? 'CAC Number' : 'NIN Number'}</Label>
             <Input value={idNumber} onChange={(e) => setIdNumber(e.target.value)} className={inputClassName} />

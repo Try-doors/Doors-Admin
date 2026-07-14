@@ -9,7 +9,7 @@ const trafficStats = [
 
 export function TotalTrafficCard() {
   return (
-    <div className="flex h-[374px] w-[256px] shrink-0 flex-col gap-4 rounded-lg border border-[#E2E4E9] bg-white p-5">
+    <div className="flex h-[374px] w-full shrink-0 flex-col gap-4 rounded-lg border border-[#E2E4E9] bg-white p-5 xl:w-[256px]">
       <div className="flex items-center justify-between">
         <p className="text-[16px] font-medium tracking-[-0.176px] text-[#0A0D14]">Total Traffic</p>
         <FilterChip label="Today" />

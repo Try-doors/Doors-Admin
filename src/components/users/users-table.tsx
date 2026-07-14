@@ -27,7 +27,7 @@ export function UsersTable({ users, getActions }: UsersTableProps) {
   }
 
   return (
-    <table className="w-full border-collapse text-left">
+    <table className="w-full min-w-[820px] border-collapse text-left">
       <thead>
         <tr className="border-b border-[#F6F8FA]">
           <th className="w-[64px] py-3 pl-5">

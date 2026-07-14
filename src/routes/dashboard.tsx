@@ -54,7 +54,7 @@ function Dashboard() {
   return (
     <DashboardLayout>
       <div className="flex flex-col gap-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h1 className="text-[24px] font-semibold tracking-[-0.5px] text-[#0A0D14]">
             Dashboard
           </h1>
@@ -66,18 +66,18 @@ function Dashboard() {
 
         <StatCards />
 
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 xl:flex-row">
           <BarChartCard
             title="Rent Rate"
             chips={['2024', 'Year']}
             data={rentRateData}
             unit="Properties Rented"
-            className="w-[808px]"
+            className="w-full xl:w-[808px]"
           />
           <PropertyBreakdownCard />
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 xl:flex-row">
           <TotalTrafficCard />
           <BarChartCard
             title="Purchase Rate"
@@ -85,11 +85,11 @@ function Dashboard() {
             data={purchaseRateData}
             unit="Customer Purchased"
             defaultActiveIndex={5}
-            className="w-[808px]"
+            className="w-full xl:w-[808px]"
           />
         </div>
 
-        <div className="flex gap-5">
+        <div className="flex flex-col gap-5 xl:flex-row">
           <RecentActivityCard onViewAll={() => setOpenPanel('activities')} />
           <TopAgentsCard onViewAll={() => setOpenPanel('agents')} />
           <CustomerLocationCard onViewAll={() => setOpenPanel('location')} />

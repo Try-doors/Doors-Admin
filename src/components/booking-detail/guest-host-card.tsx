@@ -22,7 +22,7 @@ export function GuestHostCard({ booking }: { booking: Booking }) {
   const tier = tierMeta[booking.guestVerificationTier]
 
   return (
-    <div className="grid grid-cols-2 gap-6 rounded-2xl border border-[#E2E4E9] bg-white p-6">
+    <div className="grid grid-cols-1 gap-6 rounded-2xl border border-[#E2E4E9] bg-white p-6 sm:grid-cols-2">
       <div className="flex flex-col gap-4">
         <p className="text-[16px] font-medium tracking-[-0.176px] text-[#0C111D]">Guest</p>
         <Field label="Name" value={booking.guestName} />
@@ -46,7 +46,7 @@ export function GuestHostCard({ booking }: { booking: Booking }) {
         />
       </div>
 
-      <div className="flex flex-col gap-4 border-l border-[#F2F4F7] pl-6">
+      <div className="flex flex-col gap-4 border-t border-[#F2F4F7] pt-4 sm:border-l sm:border-t-0 sm:pt-0 sm:pl-6">
         <p className="text-[16px] font-medium tracking-[-0.176px] text-[#0C111D]">
           {booking.isDoorsManaged ? 'Managed By' : 'Host / Agent'}
         </p>

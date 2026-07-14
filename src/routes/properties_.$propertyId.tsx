@@ -142,7 +142,7 @@ function PropertyDetail() {
           Back
         </button>
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-[24px] font-semibold tracking-[-1px] text-[#0C111D]">
             Property Details
           </h1>

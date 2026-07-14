@@ -52,7 +52,7 @@ export function PreviewStep({ data, photos, videos, status, onStatusChange }: Pr
 
       <div className="flex flex-col gap-4">
         <SectionTitle>Property Information</SectionTitle>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field label="Property Name" value={data.name} />
           <Field label="Property Type" value={data.type} />
         </div>
@@ -61,7 +61,7 @@ export function PreviewStep({ data, photos, videos, status, onStatusChange }: Pr
 
       <div className="flex flex-col gap-4">
         <SectionTitle>Location</SectionTitle>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field label="Country" value={data.country} />
           <Field label="State" value={data.state} />
           <Field label="City" value={data.city} />
@@ -72,7 +72,7 @@ export function PreviewStep({ data, photos, videos, status, onStatusChange }: Pr
 
       <div className="flex flex-col gap-4">
         <SectionTitle>Details</SectionTitle>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <Field label="Bedroom" value={String(data.bedroom)} />
           <Field label="Sitting Room" value={String(data.sittingRoom)} />
           <Field label="Kitchen" value={String(data.kitchen)} />
@@ -83,7 +83,7 @@ export function PreviewStep({ data, photos, videos, status, onStatusChange }: Pr
       <div className="flex flex-col gap-4">
         <SectionTitle>Photos</SectionTitle>
         {photos.length > 0 ? (
-          <div className="grid grid-cols-3 gap-3">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             {photos.map((photo) => (
               <div
                 key={photo.id}

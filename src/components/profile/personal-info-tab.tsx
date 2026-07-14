@@ -70,7 +70,7 @@ export function PersonalInfoTab({ onSaved }: { onSaved: () => void }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
           <div className="flex flex-col gap-1">
             <Label className={labelClassName}>Legal Name</Label>
             <Input value={name} onChange={(e) => setName(e.target.value)} className={inputClassName} />

@@ -13,7 +13,7 @@ function NotificationsPage() {
   return (
     <DashboardLayout>
       <div className="mx-auto flex w-[539px] max-w-full flex-col gap-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-[24px] font-semibold tracking-[-1px] text-[#0C111D]">
             Notifications
           </h1>

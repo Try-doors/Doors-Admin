@@ -38,7 +38,7 @@ type PropertiesTableProps = {
 
 export function PropertiesTable({ properties, onView, onDelete }: PropertiesTableProps) {
   return (
-    <table className="w-full border-collapse text-left">
+    <table className="w-full min-w-[900px] border-collapse text-left">
       <thead>
         <tr className="border-b border-[#F6F8FA]">
           <th className="w-[64px] py-3 pl-5">
