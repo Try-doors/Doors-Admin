@@ -1,4 +1,6 @@
-import { createContext, use, useState, type ReactNode } from 'react'
+import { createContext, use, type ReactNode } from 'react'
+
+import { usePersistedState } from '#/lib/use-persisted-state'
 
 export type PlatformUser = {
   id: string
@@ -49,9 +51,9 @@ type UsersContextValue = {
 const UsersContext = createContext<UsersContextValue | null>(null)
 
 export function UsersProvider({ children }: { children: ReactNode }) {
-  const [activeUsers, setActiveUsers] = useState(initialActiveUsers)
-  const [archivedUsers, setArchivedUsers] = useState(initialArchivedUsers)
-  const [blockedUsers, setBlockedUsers] = useState(initialBlockedUsers)
+  const [activeUsers, setActiveUsers] = usePersistedState('users:active', initialActiveUsers)
+  const [archivedUsers, setArchivedUsers] = usePersistedState('users:archived', initialArchivedUsers)
+  const [blockedUsers, setBlockedUsers] = usePersistedState('users:blocked', initialBlockedUsers)
 
   function findAndRemove(id: string): PlatformUser | null {
     let found: PlatformUser | null = null

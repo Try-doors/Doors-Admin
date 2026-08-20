@@ -1,21 +1,35 @@
-import { ArrowUpRight, Bell } from 'lucide-react'
+import { AlertTriangle, Bell, Building2, CalendarCheck, Crown, ListChecks, PiggyBank, Receipt, Users } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
+
+import { TrendBadge } from '#/components/dashboard/trend-badge'
+import { useDashboardMetrics } from '#/lib/use-dashboard-metrics'
+
+function formatNaira(amount: number) {
+  return `₦${Math.round(amount).toLocaleString('en-NG')}`
+}
 
 type Stat = {
   label: string
   value: string
-  trend: string
-  direction: 'up' | 'down'
+  trendPct: number | null
+  icon: LucideIcon
 }
 
-const stats: Stat[] = [
-  { label: 'Total Revenue', value: '$400,000', trend: '16.34%', direction: 'down' },
-  { label: 'Total Properties', value: '548', trend: '22.9%', direction: 'up' },
-  { label: 'Total Users', value: '54,880', trend: '22.9%', direction: 'up' },
-  { label: 'Total Owners', value: '548', trend: '22.9%', direction: 'up' },
-  { label: 'Total Application', value: '240,500', trend: '22.9%', direction: 'up' },
-]
-
 export function StatCards() {
+  const m = useDashboardMetrics()
+
+  const stats: Stat[] = [
+    { label: 'Total Revenue', value: formatNaira(m.totalRevenue), trendPct: m.revenueTrendPct, icon: Bell },
+    { label: 'Total Bookings', value: String(m.totalBookings), trendPct: m.bookingsTrendPct, icon: CalendarCheck },
+    { label: 'Avg Booking Value', value: formatNaira(m.avgBookingValue), trendPct: null, icon: Receipt },
+    { label: 'Commission Earned', value: formatNaira(m.totalCommissionEarned), trendPct: null, icon: PiggyBank },
+    { label: 'Total Properties', value: String(m.totalProperties), trendPct: null, icon: Building2 },
+    { label: 'Total Owners', value: String(m.totalOwners), trendPct: null, icon: Crown },
+    { label: 'Total Users', value: String(m.totalUsers), trendPct: null, icon: Users },
+    { label: 'Needs Action', value: String(m.needsActionCount), trendPct: null, icon: ListChecks },
+    { label: 'Disputed', value: String(m.disputedCount), trendPct: null, icon: AlertTriangle },
+  ]
+
   return (
     <div className="flex flex-wrap gap-5">
       {stats.map((stat) => (
@@ -25,20 +39,20 @@ export function StatCards() {
         >
           <div className="flex items-center gap-1.5">
             <div className="flex items-center justify-center rounded-full bg-[#F5F8FF] p-1">
-              <Bell className="size-3 text-[#2B59FF]" strokeWidth={2} />
+              <stat.icon className="size-3 text-[#2B59FF]" strokeWidth={2} />
             </div>
             <p className="text-[12px] text-[#525866]">{stat.label}</p>
           </div>
           <div className="flex flex-col">
             <p className="text-[24px] font-bold leading-8 text-[#0A0D14]">{stat.value}</p>
-            <div className="flex h-[19px] items-center gap-[3px]">
-              {stat.direction === 'up' ? (
-                <ArrowUpRight className="size-4 text-[#079455]" strokeWidth={2} />
-              ) : (
-                <ArrowUpRight className="size-4 rotate-90 text-[#DF1C41]" strokeWidth={2} />
-              )}
-              <p className="text-[12px] text-[#525866]">{stat.trend}</p>
-            </div>
+            {stat.trendPct !== null && (
+              <div className="flex h-[19px] items-center gap-[3px]">
+                <TrendBadge direction={stat.trendPct >= 0 ? 'up' : 'down'} />
+                <p className="text-[12px] text-[#525866]">
+                  {Math.abs(stat.trendPct).toFixed(1)}% vs last month
+                </p>
+              </div>
+            )}
           </div>
         </div>
       ))}

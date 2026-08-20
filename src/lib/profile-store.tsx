@@ -1,4 +1,6 @@
-import { createContext, use, useState, type ReactNode } from 'react'
+import { createContext, use, type ReactNode } from 'react'
+
+import { usePersistedState } from '#/lib/use-persisted-state'
 
 export type AdminProfile = {
   name: string
@@ -24,7 +26,7 @@ type ProfileContextValue = {
 const ProfileContext = createContext<ProfileContextValue | null>(null)
 
 export function ProfileProvider({ children }: { children: ReactNode }) {
-  const [profile, setProfile] = useState(initialProfile)
+  const [profile, setProfile] = usePersistedState('profile', initialProfile)
 
   function updateProfile(updates: Partial<AdminProfile>) {
     setProfile((prev) => ({ ...prev, ...updates }))

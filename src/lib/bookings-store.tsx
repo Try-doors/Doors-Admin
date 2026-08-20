@@ -1,4 +1,6 @@
-import { createContext, use, useState, type ReactNode } from 'react'
+import { createContext, use, type ReactNode } from 'react'
+
+import { usePersistedState } from '#/lib/use-persisted-state'
 
 export type BookingStatus =
   | 'DRAFT'
@@ -76,7 +78,7 @@ export type Booking = {
 // Statuses that put a booking in the "Needs Action" queue.
 export const NEEDS_ACTION_STATUSES: BookingStatus[] = ['DISPUTED', 'PENDING_APPROVAL', 'FAILED']
 
-const initialBookings: Booking[] = [
+const seedBookings: Booking[] = [
   {
     id: 'b1',
     reference: 'DR-48213',
@@ -617,6 +619,14 @@ const initialBookings: Booking[] = [
   },
 ]
 
+// Seed timeline ids (t1, t2, ...) are only unique within a booking; prefix
+// with the booking id so cross-booking lists (dashboard activity feed,
+// "All Activities" panel) never render two events under the same React key.
+const initialBookings: Booking[] = seedBookings.map((booking) => ({
+  ...booking,
+  timeline: booking.timeline.map((event) => ({ ...event, id: `${booking.id}-${event.id}` })),
+}))
+
 function urgencyWeight(status: BookingStatus) {
   if (status === 'DISPUTED') return 0
   if (status === 'PENDING_APPROVAL') return 1
@@ -636,7 +646,7 @@ type BookingsContextValue = {
 const BookingsContext = createContext<BookingsContextValue | null>(null)
 
 export function BookingsProvider({ children }: { children: ReactNode }) {
-  const [bookings, setBookings] = useState(initialBookings)
+  const [bookings, setBookings] = usePersistedState('bookings', initialBookings)
 
   function addTimelineEvent(id: string, event: Omit<TimelineEvent, 'id'>) {
     setBookings((prev) =>

@@ -1,4 +1,6 @@
-import { createContext, use, useState, type ReactNode } from 'react'
+import { createContext, use, type ReactNode } from 'react'
+
+import { usePersistedState } from '#/lib/use-persisted-state'
 
 export type PropertyStatus = 'RENT' | 'PURCHASE'
 
@@ -88,7 +90,7 @@ type PropertiesContextValue = {
 const PropertiesContext = createContext<PropertiesContextValue | null>(null)
 
 export function PropertiesProvider({ children }: { children: ReactNode }) {
-  const [properties, setProperties] = useState(initialProperties)
+  const [properties, setProperties] = usePersistedState('properties', initialProperties)
 
   function addProperty(input: NewPropertyInput) {
     setProperties((prev) => [

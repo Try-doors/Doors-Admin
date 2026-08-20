@@ -1,4 +1,6 @@
-import { createContext, use, useState, type ReactNode } from 'react'
+import { createContext, use, type ReactNode } from 'react'
+
+import { usePersistedState } from '#/lib/use-persisted-state'
 
 export type NotificationItem = {
   id: string
@@ -51,7 +53,7 @@ type NotificationsContextValue = {
 const NotificationsContext = createContext<NotificationsContextValue | null>(null)
 
 export function NotificationsProvider({ children }: { children: ReactNode }) {
-  const [notifications, setNotifications] = useState(initialNotifications)
+  const [notifications, setNotifications] = usePersistedState('notifications', initialNotifications)
   const unreadCount = notifications.filter((n) => !n.read).length
 
   function markAllRead() {

@@ -1,6 +1,7 @@
-import { createContext, use, useState, type ReactNode } from 'react'
+import { createContext, use, type ReactNode } from 'react'
 
 import type { Owner } from '#/components/owners/owners-table'
+import { usePersistedState } from '#/lib/use-persisted-state'
 
 const initialActiveOwners: Owner[] = [
   {
@@ -158,8 +159,8 @@ type OwnersContextValue = {
 const OwnersContext = createContext<OwnersContextValue | null>(null)
 
 export function OwnersProvider({ children }: { children: ReactNode }) {
-  const [activeOwners, setActiveOwners] = useState(initialActiveOwners)
-  const [pendingOwners, setPendingOwners] = useState(initialPendingOwners)
+  const [activeOwners, setActiveOwners] = usePersistedState('owners:active', initialActiveOwners)
+  const [pendingOwners, setPendingOwners] = usePersistedState('owners:pending', initialPendingOwners)
 
   function addOwner(input: NewOwnerInput) {
     setActiveOwners((prev) => [
