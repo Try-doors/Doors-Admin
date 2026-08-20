@@ -1,4 +1,6 @@
-import { createContext, use, useState, type ReactNode } from 'react'
+import { createContext, use, type ReactNode } from 'react'
+
+import { usePersistedState } from '#/lib/use-persisted-state'
 
 export type TeamRole = 'Admin' | 'Member'
 export type TeamStatus = 'Active' | 'Blocked'
@@ -38,7 +40,7 @@ type TeamContextValue = {
 const TeamContext = createContext<TeamContextValue | null>(null)
 
 export function TeamProvider({ children }: { children: ReactNode }) {
-  const [members, setMembers] = useState(initialMembers)
+  const [members, setMembers] = usePersistedState('team:members', initialMembers)
 
   function inviteMember(email: string, role: TeamRole) {
     const name = email.split('@')[0]

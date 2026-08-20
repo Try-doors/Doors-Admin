@@ -4,52 +4,31 @@ import { Calendar, ChevronDown } from 'lucide-react'
 
 import { AllActivitiesPanel } from '#/components/dashboard/all-activities-panel'
 import { BarChartCard } from '#/components/dashboard/bar-chart-card'
+import { BookingMixCard } from '#/components/dashboard/booking-mix-card'
+import { BookingStatusChart } from '#/components/dashboard/booking-status-chart'
 import { CustomerLocationCard } from '#/components/dashboard/customer-location-card'
 import { CustomerLocationPanel } from '#/components/dashboard/customer-location-panel'
 import { DashboardLayout } from '#/components/dashboard/dashboard-layout'
+import { PayoutPipelineCard } from '#/components/dashboard/payout-pipeline-card'
+import { PlatformCompositionCard } from '#/components/dashboard/platform-composition-card'
 import { PropertyBreakdownCard } from '#/components/dashboard/property-breakdown-card'
 import { RecentActivityCard } from '#/components/dashboard/recent-activity-card'
 import { StatCards } from '#/components/dashboard/stat-cards'
 import { TopAgentsCard } from '#/components/dashboard/top-agents-card'
 import { TopAgentsPanel } from '#/components/dashboard/top-agents-panel'
 import { TotalTrafficCard } from '#/components/dashboard/total-traffic-card'
+import { useDashboardMetrics } from '#/lib/use-dashboard-metrics'
 
 export const Route = createFileRoute('/dashboard')({ component: Dashboard })
-
-const rentRateData = [
-  { label: 'Jan', value: 770 },
-  { label: 'Feb', value: 930 },
-  { label: 'Mar', value: 550 },
-  { label: 'Apr', value: 800 },
-  { label: 'May', value: 580 },
-  { label: 'Jun', value: 900 },
-  { label: 'Jul', value: 700 },
-  { label: 'Aug', value: 750 },
-  { label: 'Sep', value: 720 },
-  { label: 'Oct', value: 800 },
-  { label: 'Nov', value: 900 },
-  { label: 'Dec', value: 680 },
-]
-
-const purchaseRateData = [
-  { label: 'Jan', value: 750 },
-  { label: 'Feb', value: 930 },
-  { label: 'Mar', value: 550 },
-  { label: 'Apr', value: 800 },
-  { label: 'May', value: 580 },
-  { label: 'Jun', value: 800 },
-  { label: 'Jul', value: 700 },
-  { label: 'Aug', value: 750 },
-  { label: 'Sep', value: 720 },
-  { label: 'Oct', value: 800 },
-  { label: 'Nov', value: 900 },
-  { label: 'Dec', value: 680 },
-]
 
 type OpenPanel = 'activities' | 'agents' | 'location' | null
 
 function Dashboard() {
   const [openPanel, setOpenPanel] = useState<OpenPanel>(null)
+  const { bookingsByMonth } = useDashboardMetrics()
+
+  const bookingsData = bookingsByMonth.map((m) => ({ label: m.label, value: m.bookings }))
+  const revenueData = bookingsByMonth.map((m) => ({ label: m.label, value: m.revenue }))
 
   return (
     <DashboardLayout>
@@ -68,10 +47,10 @@ function Dashboard() {
 
         <div className="flex flex-col gap-5 xl:flex-row">
           <BarChartCard
-            title="Rent Rate"
-            chips={['2024', 'Year']}
-            data={rentRateData}
-            unit="Properties Rented"
+            title="Bookings by Month"
+            chips={['Last 6 Months']}
+            data={bookingsData}
+            unit="Bookings"
             className="w-full xl:w-[808px]"
           />
           <PropertyBreakdownCard />
@@ -80,13 +59,20 @@ function Dashboard() {
         <div className="flex flex-col gap-5 xl:flex-row">
           <TotalTrafficCard />
           <BarChartCard
-            title="Purchase Rate"
-            chips={['Year']}
-            data={purchaseRateData}
-            unit="Customer Purchased"
-            defaultActiveIndex={5}
+            title="Revenue by Month"
+            chips={['Last 6 Months']}
+            data={revenueData}
+            unit="₦"
             className="w-full xl:w-[808px]"
           />
+        </div>
+
+        <BookingStatusChart />
+
+        <div className="grid grid-cols-1 gap-5 xl:grid-cols-3">
+          <PayoutPipelineCard />
+          <BookingMixCard />
+          <PlatformCompositionCard />
         </div>
 
         <div className="flex flex-col gap-5 xl:flex-row">
